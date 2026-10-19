@@ -1,0 +1,85 @@
+{
+  "name": "genpark-personal-agent-home-mortgage-refinance-breakeven-skill",
+  "version": "1.0.0",
+  "title": "Home Mortgage Refinance Amortization & Breakeven Copilot Skill",
+  "description": "Dynamic mortgage escrow amortization, current vs. candidate loan rate differential, closing points & fees amortization breakeven window analysis, and automated refinance lock-in trigger. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "mortgage",
+    "refinance",
+    "breakeven",
+    "amortization",
+    "personal-finance",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_refinance_breakeven",
+      "description": "Calculate monthly principal & interest payment savings, total closing friction costs, and exact breakeven month count for mortgage refinancing.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "current_balance_usd": {
+            "type": "number"
+          },
+          "current_rate_pct": {
+            "type": "number",
+            "description": "e.g. 6.875"
+          },
+          "current_remaining_months": {
+            "type": "integer"
+          },
+          "proposed_rate_pct": {
+            "type": "number",
+            "description": "e.g. 5.625"
+          },
+          "proposed_term_months": {
+            "type": "integer",
+            "description": "e.g. 360 for 30yr"
+          },
+          "total_closing_costs_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "current_balance_usd",
+          "current_rate_pct",
+          "current_remaining_months",
+          "proposed_rate_pct",
+          "proposed_term_months",
+          "total_closing_costs_usd"
+        ]
+      }
+    },
+    {
+      "name": "generate_mortgage_refinance_decision_memo",
+      "description": "Generate an executive mortgage refinance advisory memo assessing planned occupancy horizon against breakeven threshold.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "breakeven_months": {
+            "type": "integer"
+          },
+          "monthly_savings_usd": {
+            "type": "number"
+          },
+          "planned_occupancy_years": {
+            "type": "number"
+          },
+          "net_5yr_savings_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "breakeven_months",
+          "monthly_savings_usd",
+          "planned_occupancy_years"
+        ]
+      }
+    }
+  ]
+}
